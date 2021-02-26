@@ -4,11 +4,11 @@
  */
 function NEWData() {
 	// TODO Auto-generated method stub
-	databaseManager.setAutoSave(false);
-	var idx = foundset.newRecord(false); // add as last record
-	if (idx >= 0) // returned index is -1 in case of failure
-	{
+	//databaseManager.setAutoSave(false);
+	//var idx = foundset.newRecord(false); // add as last record
+	//if (idx >= 0) // returned index is -1 in case of failure
+	//{
 		
-	   ;
+//	   ;
 	}
-}
+//}

@@ -23,19 +23,51 @@ function initNav(){
  * @properties={typeid:24,uuid:"42D35E11-CCC5-448E-8339-FFA45B4512DC"}
  * @SuppressWarnings(wrongparameters)
  */
+
+
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"61BC8B69-315B-4F41-8C97-A4BEBDAF1695"}
+ */
+var prodprice;
+
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"3CF4DE6B-A7BA-4D43-951C-DBEFA5A2386F"}
+ */
+var prodquantity;
+/**
+ * @type {String}
+ *
+ * @properties={typeid:35,uuid:"34292D7F-9944-4FD5-BB51-3310E4196E23"}
+ */
+var name; 
+
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param event
+ *
+ * @properties={typeid:24,uuid:"40B812EC-207B-41F0-9124-389B3CC8BDDA"}
+ */
 function submit(event) {
 	// TODO Auto-generated method stub
+	foundset.newRecord();
+
+	foundset.product_price = prodprice;
+	foundset.product_quantity = prodquantity;
+	foundset.product_name = name;
+
+		databaseManager.saveData();
+		
+		application.output("saved successfully");
 	
 	
 	
-	  	   databaseManager.saveData(); 
-	  	   databaseManager.setAutoSave(true); 
-	    application.output("added on position " + idx);
-	    reload = location.reload();
-	  
-	    // when adding at the end of the foundset, the returned index
-	    // corresponds with the size of the foundset
-	  
+	        
 	
 }
 
@@ -80,7 +112,9 @@ function submit(event) {
  */
 function onFocusGained(event) {
 	// TODO Auto-generated method stub
-	databaseManager.setAutoSave(false);
+	//foundset.newRecord();
+//	databaseManager.setAutoSave(false);
+
 	
 }
 
@@ -93,9 +127,9 @@ function onFocusGained(event) {
 function showform(event) {
 	// TODO Auto-generated method stub
 	forms.addproducts.controller.show();
-
 	
-	// foundset.newRecord(); // adds as first record
+	
+	 foundset.newRecord(); // adds as first record
 	// foundset.newRecord(2); //adds as second record
 	
 }
@@ -136,4 +170,40 @@ function onLoad(event) {
 
 	
 	
+}
+
+/**
+ * @param {object} menuItemId
+ * @param {JSEvent} event
+ *
+ * @properties={typeid:24,uuid:"78CB2364-4C59-401D-811B-036722F0939F"}
+ */
+function onMenuItemExpanded(menuItemId, event) {
+	// TODO Auto-generated method stub
+	function loadMenuItems() {
+
+		/** @type {CustomType<servoyextra-sidenav.MenuItem>} */
+		var menuItem;
+		var menuItems = [];
+	
+
+		// HOME
+		menuItem = new Object();
+		menuItem.id = "homeDashboard";
+		menuItem.text = "DASHBOARD"
+		menuItem.iconStyleClass = "fa fa-th-large";
+		menuItems.push(menuItem);
+
+		// CUSTOMERS
+		menuItem = new Object();
+		menuItem.id = "customersTableView";
+		menuItem.text = "CUSTOMERS"
+		menuItem.iconStyleClass = "icon-contacts";
+		menuItems.push(menuItem);
+
+		// ORDERS
+		
+		return menuItems;
+	}
+
 }
